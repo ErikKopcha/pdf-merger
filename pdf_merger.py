@@ -221,10 +221,10 @@ def main():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
-  python pdf_merger_pro.py /path/to/folder
-  python pdf_merger_pro.py /path/to/folder --output "My Merged Document"
-  python pdf_merger_pro.py /path/to/folder -o "Custom Name" --recursive
-  python pdf_merger_pro.py . --output "Current Folder PDFs"
+  python3 pdf_merger_pro.py /path/to/folder
+  python3 pdf_merger_pro.py /path/to/folder --output "My Merged Document"
+  python3 pdf_merger_pro.py /path/to/folder -o "Custom Name" --recursive
+  python3 pdf_merger_pro.py . --output "Current Folder PDFs"
         """
     )
 
