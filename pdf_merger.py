@@ -13,9 +13,9 @@ Features:
 - Error handling and validation
 
 Usage:
-    python pdf_merger_pro.py /path/to/folder
-    python pdf_merger_pro.py /path/to/folder --output "Custom Name"
-    python pdf_merger_pro.py /path/to/folder -o "Custom Name" --recursive
+    python3 pdf_merger_pro.py /path/to/folder
+    python3 pdf_merger_pro.py /path/to/folder --output "Custom Name"
+    python3 pdf_merger_pro.py /path/to/folder -o "Custom Name" --recursive
 """
 
 import os
