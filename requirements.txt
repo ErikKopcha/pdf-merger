@@ -1,0 +1,16 @@
+# PDF Merger Pro - Requirements
+# Core dependencies for PDF processing and CLI interface
+
+# PDF processing library (modern and actively maintained)
+pypdf>=4.0.0
+
+# Beautiful progress bars and CLI enhancements
+tqdm>=4.65.0
+
+# Optional: Alternative PDF library (fallback)
+# PyPDF2>=3.0.0
+
+# Development dependencies (optional)
+# pytest>=7.0.0
+# black>=23.0.0
+# flake8>=6.0.0
