@@ -1,4 +1,4 @@
-# PDF Merger Pro 📄✨
+# PDF Merger 📄✨
 
 A powerful and user-friendly command-line tool for merging PDF files with style! Perfect for combining course materials, documents, or any collection of PDFs.
 
@@ -15,6 +15,7 @@ A powerful and user-friendly command-line tool for merging PDF files with style!
 ## 📦 Installation
 
 1. **Clone the repository:**
+
    ```bash
    git clone git@github.com:ErikKopcha/pdf-merger.git
    cd pdf-merger
@@ -28,53 +29,64 @@ A powerful and user-friendly command-line tool for merging PDF files with style!
 ## 🎮 Usage
 
 ### Basic Usage
+
 ```bash
-python pdf_merger.py /path/to/folder
+python main.py /path/to/folder
+
+# or run as a module
+python -m cli.app /path/to/folder
 ```
 
 ### Advanced Usage
+
 ```bash
 # Merge PDFs with custom output name
-python pdf_merger.py /path/to/folder --output "My_Merged_Document"
+python main.py /path/to/folder --output "My_Merged_Document"
 
 # Recursive search in subfolders
-python pdf_merger.py /path/to/folder --recursive
+python main.py /path/to/folder --recursive
 
 # Custom destination folder
-python pdf_merger.py /path/to/folder --destination /path/to/output
+python main.py /path/to/folder --destination /path/to/output
 
 # Combine all options
-python pdf_merger.py /path/to/folder --output "Complete_Course" --recursive --destination ~/Documents
+python main.py /path/to/folder --output "Complete_Course" --recursive --destination ~/Documents
 ```
 
 ### Command Line Arguments
 
-| Argument | Description | Example |
-|----------|-------------|---------|
-| `folder_path` | Path to folder containing PDFs | `/Users/john/Documents` |
-| `--output` | Custom name for output PDF | `--output "My_Document"` |
-| `--recursive` | Search in subfolders | `--recursive` |
-| `--destination` | Output folder path | `--destination ~/Downloads` |
-| `--help` | Show help message | `--help` |
+| Argument        | Description                    | Example                     |
+| --------------- | ------------------------------ | --------------------------- |
+| `folder_path`   | Path to folder containing PDFs | `/Users/john/Documents`     |
+| `--output`      | Custom name for output PDF     | `--output "My_Document"`    |
+| `--recursive`   | Search in subfolders           | `--recursive`               |
+| `--destination` | Output folder path             | `--destination ~/Downloads` |
+| `--help`        | Show help message              | `--help`                    |
 
 ## 📋 Examples
 
 ### Example 1: Merge Course Materials
+
 ```bash
-python pdf_merger.py "Python Course" --output "Python_Complete" --recursive
+python main.py "Python Course" --output "Python_Complete" --recursive
 ```
+
 **Result:** All PDFs from "Python Course" folder and subfolders merged into "Python_Complete.pdf"
 
 ### Example 2: Merge Single Folder
+
 ```bash
-python pdf_merger.py "Topic 1"
+python main.py "Topic 1"
 ```
+
 **Result:** All PDFs from "Topic 1" folder merged into "Topic 1.pdf"
 
 ### Example 3: Custom Destination
+
 ```bash
-python pdf_merger.py "Documents" --destination ~/Desktop --output "All_Docs"
+python main.py "Documents" --destination ~/Desktop --output "All_Docs"
 ```
+
 **Result:** Merged PDF saved as "All_Docs.pdf" on Desktop
 
 ## 🔧 Requirements
@@ -87,30 +99,39 @@ python pdf_merger.py "Documents" --destination ~/Desktop --output "All_Docs"
 
 ```
 pdf-merger/
-├── pdf_merger.py    # Main script
-├── requirements.txt     # Dependencies
-├── README.md           # Documentation
-└── .gitignore         # Git ignore rules
+├── main.py          # Thin CLI entry point
+├── cli/              # CLI wiring (parser + app)
+├── core/             # Domain services (scanner, merger, orchestrator)
+├── config/           # Constants + dataclasses
+├── utils/            # Console + filesystem helpers
+├── requirements.txt
+└── README.md
 ```
+
+> Потрібні інтеграції? Просто імпортуй `core.orchestrator.MergeOrchestrator` або окремі сервіси, не запускаючи subprocess-CLI.
 
 ## 🎨 Features in Detail
 
 ### Smart File Sorting
+
 - Automatically sorts files alphabetically
 - Prioritizes "Introduction" and "Conclusion" files
 - Handles Ukrainian and English file names
 
 ### Progress Tracking
+
 - Real-time progress bars during merging
 - File-by-file processing updates
 - Final statistics summary
 
 ### Error Handling
+
 - Graceful handling of corrupted PDFs
 - Clear error messages
 - Continues processing even if some files fail
 
 ### Output Information
+
 - 📄 Total files processed
 - 📖 Total pages in merged PDF
 - 💾 Final file size
@@ -131,6 +152,7 @@ This project is open source and available under the [MIT License](LICENSE).
 ## 🐛 Issues & Support
 
 If you encounter any issues or have questions:
+
 1. Check the [Issues](https://github.com/ErikKopcha/pdf-merger/issues) page
 2. Create a new issue with detailed description
 3. Include error messages and system information
