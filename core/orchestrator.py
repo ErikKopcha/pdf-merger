@@ -30,6 +30,7 @@ class MergeOrchestrator:
 
     def execute(self, settings: MergeSettings) -> Optional[MergeOutcome]:
         folder = settings.folder_path
+
         if not folder.exists():
             raise FileNotFoundError(f"Folder does not exist: {folder}")
         if not folder.is_dir():
@@ -54,6 +55,7 @@ class MergeOrchestrator:
         output_name = self._resolve_output_name(settings, folder)
         raw_output_path = destination / output_name
         output_path = ensure_unique_output(raw_output_path)
+
         if output_path != raw_output_path:
             print(
                 self.messenger.warning(f"Output file exists, using: {output_path.name}")
@@ -67,6 +69,7 @@ class MergeOrchestrator:
         )
 
         print(self.messenger.info(f"Using {self.merger.library_name} library"))
+
         if not self.merger.has_progress_bar:
             print(
                 self.messenger.warning(
@@ -83,6 +86,7 @@ class MergeOrchestrator:
     def _resolve_destination(self, destination: Optional[Path], fallback: Path) -> Path:
         target = destination or fallback
         target.mkdir(parents=True, exist_ok=True)
+
         return target
 
     def _resolve_output_name(self, settings: MergeSettings, folder: Path) -> str:
@@ -90,4 +94,5 @@ class MergeOrchestrator:
             raw_name = sanitize_filename(settings.output_name)
         else:
             raw_name = sanitize_filename(folder.name)
+
         return ensure_pdf_extension(raw_name)

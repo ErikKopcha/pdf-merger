@@ -18,4 +18,5 @@ class PdfScanner:
         pdf_files = sorted(
             settings.folder_path.glob(pattern), key=lambda path: path.name.lower()
         )
+
         return [path for path in pdf_files if path.is_file()]
